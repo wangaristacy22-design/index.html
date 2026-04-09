@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🎉 Happy Birthday Stacy! 🎂</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Raleway:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: 'Raleway', sans-serif;
+            background: linear-gradient(160deg, #d2b48c, #f5f5dc);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 96px;
+            color: #ff6f61;
+            margin-top: 100px;
+            animation: wave 2s infinite alternate;
+        }
+
+        @keyframes wave {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(-3deg); }
+            100% { transform: translateY(0px) rotate(3deg); }
+        }
+
+        .music-btn {
+            font-size: 24px;
+            padding: 12px 25px;
+            margin-top: 30px;
+            border-radius: 12px;
+            background: linear-gradient(45deg,#ff7eb3,#ffb347);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.1);
+            background: linear-gradient(45deg,#ffb347,#ff7eb3);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🎉 Happy Birthday Stacy! 🎉</h1>
+
+    <!-- Music -->
+    <div>
+        <button class="music-btn" onclick="document.getElementById('bgmusic').play()">🎧 Play Music</button>
+        <button class="music-btn" onclick="document.getElementById('bgmusic').pause()">⏸️ Pause Music</button>
+    </div>
+
+    <audio id="bgmusic" loop>
+        <source src="birthday-music.mp3" type="audio/mpeg">
+        Your browser doesn’t support audio.
+    </audio>
+
+    <!-- Confetti -->
+    <script>
+        const colors = ['#FF6F61', '#FFD700', '#FF69B4', '#00CED1', '#FFB347'];
+        for (let i = 0; i < 70; i++) {
+            let conf = document.createElement('div');
+            conf.style.position = 'absolute';
+            conf.style.width = conf.style.height = (5 + Math.random() * 12) + 'px';
+            conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.left = Math.random() * window.innerWidth + 'px';
+            conf.style.top = Math.random() * window.innerHeight + 'px';
+            conf.style.opacity = 0.9;
+            conf.style.transform = `rotate(${Math.random() * 360}deg)`;
+            conf.style.animation = `fall ${2 + Math.random() * 3}s linear infinite`;
+            document.body.appendChild(conf);
+        }
+
+        document.head.innerHTML += `
+        <style>
+            @keyframes fall {
+                0% { transform: translateY(0); opacity:1; }
+                100% { transform: translateY(100vh); opacity:0; }
+            }
+        </style>`;
+    </script>
+
+    <!-- Bouncing Balloons -->
+    <script>
+        const balloonColors = ['#FF6F61', '#FFD700', '#FF69B4', '#00CED1', '#FFB347'];
+
+        function createBalloon() {
+            const balloon = document.createElement('div');
+            balloon.style.position = 'absolute';
+            balloon.style.bottom = Math.random() * 20 + 'px';
+            balloon.style.left = Math.random() * window.innerWidth + 'px';
+            balloon.style.width = balloon.style.height = (30 + Math.random() * 40) + 'px';
+            balloon.style.backgroundColor = balloonColors[Math.floor(Math.random() * balloonColors.length)];
+            balloon.style.borderRadius = '50%';
+            balloon.style.opacity = 0.9;
+            balloon.style.animation = `bounce ${(3 + Math.random() * 3)}s ease-in-out infinite alternate`;
+            document.body.appendChild(balloon);
+        }
+
+        setInterval(createBalloon, 500);
+
+        document.head.innerHTML += `
+        <style>
+            @keyframes bounce {
+                0% { transform: translateY(0); }
+                50% { transform: translateY(-50px); }
+                100% { transform: translateY(0); }
+            }
+        </style>`;
+    </script>
+
+</body>
+</html>
